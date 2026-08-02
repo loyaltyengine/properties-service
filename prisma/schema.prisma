@@ -1,0 +1,61 @@
+generator client {
+  provider     = "prisma-client"
+  output       = "../src/database/gen"
+  moduleFormat = "cjs"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Property {
+  id              String         @id @default(uuid())
+  createdByUserId String
+  name            String
+  description     String?
+  type            PropertyType   @default(OTHER)
+  domain          String?
+  email           String?
+  status          PropertyStatus @default(ACTIVE)
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+
+  users PropertyUser[]
+
+  @@map("properties")
+}
+
+model PropertyUser {
+  id               String   @id @default(uuid())
+  propertyId       String
+  userId           String
+  role             UserRole @default(VIEWER)
+  assignedAt       DateTime @default(now())
+  assignedByUserId String
+  updatedAt        DateTime @updatedAt
+
+  property Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+
+  @@unique([propertyId, userId])
+  @@map("property_users")
+}
+
+enum PropertyType {
+  WEBSITE
+  APP
+  ORGANIZATION
+  OTHER
+}
+
+enum PropertyStatus {
+  ACTIVE
+  SUSPENDED
+  ARCHIVED
+}
+
+enum UserRole {
+  OWNER
+  ADMIN
+  EDITOR
+  VIEWER
+}
