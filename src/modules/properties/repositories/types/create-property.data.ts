@@ -1,5 +1,3 @@
-export interface CreatePropertyData {
-    name: string;
-    description?: string;
-    userId: string;
-}
+import { Prisma } from 'src/database/gen/client';
+
+export type CreatePropertyData = Prisma.PropertyCreateInput;
