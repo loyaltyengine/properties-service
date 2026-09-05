@@ -11,7 +11,7 @@ export class PrismaPropertyRepository implements PropertyRepository {
     constructor(private readonly prisma: PrismaService) {}
 
     async createProperty(data: CreatePropertyData): Promise<PropertyModel> {
-        const property = await this.prisma.property.create({
+        return  await this.prisma.property.create({
            data: {
                name: data.name,
                description: data.description,
@@ -20,24 +20,20 @@ export class PrismaPropertyRepository implements PropertyRepository {
                type: data.type,
                createdByUserId: data.createdByUserId
            }
-        })
-
-        return property
+        });
     }
 
     async findPropertyUser(propertyId: string, userId: string): Promise<PropertyUserModel | null> {
-        const user = await this.prisma.propertyUser.findFirst({
+        return await this.prisma.propertyUser.findFirst({
             where: {
                 propertyId: propertyId,
                 userId: userId
             }
-        })
-
-        return user
+        });
     }
 
     async createPropertyUser(data: CreatePropertyUserData): Promise<PropertyUserModel> {
-        const propertyUser = await this.prisma.propertyUser.create({
+        return  await this.prisma.propertyUser.create({
             data: {
                 property: {
                     connect: {
@@ -48,13 +44,11 @@ export class PrismaPropertyRepository implements PropertyRepository {
                 role: data.role,
                 assignedByUserId: data.assignedByUserId
             }
-        })
-
-        return propertyUser
+        });
     }
 
     async findUserProperty(propertyId: string, userId: string): Promise<PropertyModel | null> {
-        const property = await this.prisma.property.findFirst({
+        return await this.prisma.property.findFirst({
             where: {
                 id: propertyId,
                 users: {
@@ -64,8 +58,6 @@ export class PrismaPropertyRepository implements PropertyRepository {
                 }
             }
         })
-
-        return property
     }
 
 }

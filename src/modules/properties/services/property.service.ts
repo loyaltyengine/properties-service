@@ -67,12 +67,12 @@ export class PropertyServiceImpl implements PropertyService {
         }
 
         // Else create new
-        const  newUser = this.propertyRepository.createPropertyUser({
+        const newUser = await this.propertyRepository.createPropertyUser({
             propertyId: dto.propertyId,
             userId: dto.userId,
             role: dto.role,
             assignedByUserId: dto.assignedByUserId,
-        })
+        });
 
         return PropertyMapper.toPropertyUserDto(newUser);
     }
