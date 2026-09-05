@@ -46,18 +46,4 @@ export class PrismaPropertyRepository implements PropertyRepository {
             }
         });
     }
-
-    async findUserProperty(propertyId: string, userId: string): Promise<PropertyModel | null> {
-        return await this.prisma.property.findFirst({
-            where: {
-                id: propertyId,
-                users: {
-                    some: {
-                        userId: userId
-                    }
-                }
-            }
-        })
-    }
-
 }
