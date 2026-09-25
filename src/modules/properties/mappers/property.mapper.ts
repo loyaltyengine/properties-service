@@ -1,7 +1,7 @@
 import { CreatePropertyDto } from '../dtos/create-proptery.dto';
 import { PropertyDto } from '../dtos/property.dto';
 import { PropertyModel } from '../models/property.model';
-import type { CreatePropertyRequest, Property, PropertyUser } from '@loyalty-engine/properties-v1-types';
+import type { CreatePropertyRequest, Property, PropertyUser } from '@loyalty-engine/properties';
 import { PropertyType } from '../../../database/gen/enums';
 import { PropertyUserModel } from '../models/property-user.model';
 import { PropertyUserDto } from '../dtos/property-user.dto';

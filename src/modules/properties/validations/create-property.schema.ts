@@ -1,5 +1,5 @@
 import Joi from 'joi';
-import { CreatePropertyRequest } from '@loyalty-engine/properties-v1-types';
+import { CreatePropertyRequest } from '@loyalty-engine/properties';
 
 export const createPropertySchema = Joi.object<CreatePropertyRequest>({
     name: Joi.string().required().messages({

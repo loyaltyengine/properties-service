@@ -1,4 +1,4 @@
-import { ErrorType } from '@loyalty-engine/properties-v1-types';
+import { ErrorType } from '@loyalty-engine/properties';
 import { ApiException } from './api.exception';
 
 export class NotFoundException extends ApiException {

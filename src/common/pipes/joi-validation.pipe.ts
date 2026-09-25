@@ -1,6 +1,6 @@
 import { PipeTransform, Injectable, ArgumentMetadata } from '@nestjs/common';
 import type { Schema } from 'joi';
-import { ErrorType } from '@loyalty-engine/properties-v1-types';
+import { ErrorType } from '@loyalty-engine/properties';
 import { BadRequestException } from '../exceptions/bad-request.exception';
 
 @Injectable()
