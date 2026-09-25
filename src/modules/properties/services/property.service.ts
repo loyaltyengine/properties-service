@@ -6,7 +6,7 @@ import { Inject, Injectable, Logger } from '@nestjs/common';
 import { PropertyMapper } from '../mappers/property.mapper';
 import { UserRole } from 'src/database/gen/enums';
 import { NotFoundException } from 'src/common/exceptions/not-found.exception';
-import { ErrorType } from '@loyalty-engine/properties-v1-types';
+import { ErrorType } from '@loyalty-engine/properties';
 import { PropertyUserDto } from '../dtos/property-user.dto';
 import { CreatePropertyUserDto } from '../dtos/create-property-user.dto';
 import { BadRequestException } from '../../../common/exceptions/bad-request.exception';

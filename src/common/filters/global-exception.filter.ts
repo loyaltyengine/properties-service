@@ -1,6 +1,6 @@
 import { ExceptionFilter, Catch, ArgumentsHost, HttpException } from '@nestjs/common';
 import { Response } from 'express';
-import { ErrorResponse, ErrorType, ErrorDetail } from '@loyalty-engine/properties-v1-types';
+import { ErrorResponse, ErrorType, ErrorDetail } from '@loyalty-engine/properties';
 import { ApiException } from '../exceptions/api.exception';
 
 @Catch()

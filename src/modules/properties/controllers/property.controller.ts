@@ -5,13 +5,13 @@ import type {
     CreatePropertyUserRequest,
     PropertyResponse,
     PropertyUserResponse,
-} from '@loyalty-engine/properties-v1-types';
+} from '@loyalty-engine/properties';
 import { JoiValidationPipe } from '../../../common/pipes/joi-validation.pipe';
 import { createPropertySchema } from '../validations/create-property.schema';
 import { PropertyMapper } from '../mappers/property.mapper';
 import { UserRole } from '../../../database/gen/enums';
 
-@Controller('v1/')
+@Controller('properties-api/v1/')
 export class PropertyController {
     constructor(@Inject('PropertyService') private readonly service: PropertyService) {}
 
@@ -32,7 +32,7 @@ export class PropertyController {
         };
     }
 
-    @Get('properties/:propertyId/users/:userId')
+    @Get('properties/:propertyId/users/:userId/assignments')
     @HttpCode(HttpStatus.OK)
     async getUserProperty(
         @Param('propertyId') propertyId: string,
@@ -49,7 +49,7 @@ export class PropertyController {
         };
     }
 
-    @Post('properties/:propertyId')
+    @Post('properties/:propertyId/assignments')
     @HttpCode(HttpStatus.CREATED)
     async createUserProperty(
         @Param('propertyId') propertyId: string,
