@@ -10,15 +10,15 @@ datasource db {
 
 model Property {
   id              String         @id @default(uuid())
-  createdByUserId String
-  name            String
-  description     String?
-  type            PropertyType   @default(OTHER)
-  domain          String?
-  email           String?
-  status          PropertyStatus @default(ACTIVE)
-  createdAt       DateTime       @default(now())
-  updatedAt       DateTime       @updatedAt
+  createdByUserId String         @map("created_by_user_id")
+  name            String         @map("name")
+  description     String?        @map("description")
+  type            PropertyType   @default(OTHER) @map("type")
+  domain          String?        @map("domain")
+  email           String?        @map("email")
+  status          PropertyStatus @default(ACTIVE) @map("status")
+  createdAt       DateTime       @default(now()) @map("created_at")
+  updatedAt       DateTime       @updatedAt @map("updated_at")
 
   users PropertyUser[]
 
@@ -26,13 +26,13 @@ model Property {
 }
 
 model PropertyUser {
-  id               String   @id @default(uuid())
-  propertyId       String
-  userId           String
-  role             UserRole @default(VIEWER)
-  assignedAt       DateTime @default(now())
-  assignedByUserId String
-  updatedAt        DateTime @updatedAt
+  id               String   @id @default(uuid()) @map("id")
+  propertyId       String   @map("property_id")
+  userId           String   @map("user_id")
+  role             UserRole @default(VIEWER) @map("role")
+  assignedAt       DateTime @default(now()) @map("assigned_at")
+  assignedByUserId String   @map("assigned_by_user_id")
+  updatedAt        DateTime @updatedAt @map("updated_at")
 
   property Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
 
