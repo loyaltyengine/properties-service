@@ -1,7 +1,7 @@
 import { CreatePropertyDto } from '../dtos/create-proptery.dto';
 import { PropertyDto } from '../dtos/property.dto';
 import { PropertyModel } from '../models/property.model';
-import type { CreatePropertyRequest, Property, PropertyUser } from '@loyalty-engine/properties';
+import type { CreatePropertyRequest, Property, PropertyUser } from '@loyaltyengine/properties-client';
 import { PropertyType } from '../../../database/gen/enums';
 import { PropertyUserModel } from '../models/property-user.model';
 import { PropertyUserDto } from '../dtos/property-user.dto';
@@ -59,7 +59,7 @@ export class PropertyMapper {
             propertyId: dto.propertyId,
             userId: dto.userId,
             role: dto.role,
-            assignedAt: dto.assignedAt,
+            assignedAt: dto.assignedAt.toDateString(),
             assignedByUserId: dto.assignedByUserId,
         };
     }

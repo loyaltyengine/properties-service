@@ -1,4 +1,4 @@
-import { ErrorType } from '@loyalty-engine/properties';
+import { ErrorType } from '@loyaltyengine/properties-client';
 import { ApiException } from './api.exception';
 
 export class ConflictException extends ApiException {
