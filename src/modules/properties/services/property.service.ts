@@ -6,7 +6,6 @@ import { Inject, Injectable, Logger } from '@nestjs/common';
 import { PropertyMapper } from '../mappers/property.mapper';
 import { UserRole } from 'src/database/gen/enums';
 import { NotFoundException } from 'src/common/exceptions/not-found.exception';
-import { ErrorType } from '@loyalty-engine/properties';
 import { PropertyUserDto } from '../dtos/property-user.dto';
 import { CreatePropertyUserDto } from '../dtos/create-property-user.dto';
 import { BadRequestException } from '../../../common/exceptions/bad-request.exception';
@@ -46,7 +45,7 @@ export class PropertyServiceImpl implements PropertyService {
         if (!user) {
             throw new NotFoundException(
                 'Property not found',
-                ErrorType.NOT_FOUND,
+                'not_found',
                 'No user associated with this property',
             );
         }
@@ -61,7 +60,7 @@ export class PropertyServiceImpl implements PropertyService {
         if (property) {
             throw new BadRequestException(
                 'User already exists',
-                ErrorType.INVALID_REQUEST,
+                'invalid_request',
                 'User already exists for this property',
             );
         }

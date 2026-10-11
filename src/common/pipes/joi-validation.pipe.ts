@@ -1,6 +1,6 @@
 import { PipeTransform, Injectable, ArgumentMetadata } from '@nestjs/common';
 import type { Schema } from 'joi';
-import { ErrorType } from '@loyalty-engine/properties';
+import { ErrorType } from '@loyaltyengine/properties-client';
 import { BadRequestException } from '../exceptions/bad-request.exception';
 
 @Injectable()
@@ -19,7 +19,7 @@ export class JoiValidationPipe implements PipeTransform {
             }));
             throw new BadRequestException(
                 'Validation failed',
-                ErrorType.VALIDATION_ERROR,
+                'validation_error',
                 'Input data validation failed',
                 validationErrors,
             );

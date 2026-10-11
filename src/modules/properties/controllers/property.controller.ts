@@ -5,7 +5,7 @@ import type {
     CreatePropertyUserRequest,
     PropertyResponse,
     PropertyUserResponse,
-} from '@loyalty-engine/properties';
+} from '@loyaltyengine/properties-client';
 import { JoiValidationPipe } from '../../../common/pipes/joi-validation.pipe';
 import { createPropertySchema } from '../validations/create-property.schema';
 import { PropertyMapper } from '../mappers/property.mapper';

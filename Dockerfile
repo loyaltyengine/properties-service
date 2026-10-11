@@ -9,7 +9,6 @@ RUN npm install -g @nestjs/cli
 
 # Copy dependencies files
 COPY package*.json ./
-COPY libs/ ./libs/
 COPY tsconfig*.json ./
 
 # Install dependencies. Cann also use --omit=dev flag if dev dependencies are not needed
@@ -24,7 +23,7 @@ RUN npm run build
 FROM node:${NODE_VERSION}-alpine AS runner
 
 # Add production environment as container environment
-ENV NODE_ENV production
+ENV NODE_ENV=production
 
 WORKDIR /usr/src/app
 
@@ -32,7 +31,6 @@ WORKDIR /usr/src/app
 RUN apk add --no-cache curl
 
 COPY package*.json ./
-COPY libs/ ./libs/
 
 # Install production dependencies only and not dev dependencies
 RUN npm ci --omit=dev
@@ -50,4 +48,4 @@ EXPOSE 3002
 # Run the application.
 # Make sure the database is ready before starting the application so that Prisma migrations can be applied
 # in docker compos, add depends_on: to the auth-service service to ensure the database is ready
-CMD npx prisma migrate deploy && node dist/src/main
+CMD ["sh", "-c", "npx prisma migrate deploy && node dist/src/main"]

@@ -1,4 +1,4 @@
-import { ErrorDetail, ErrorType } from '@loyalty-engine/properties';
+import { ErrorDetail, ErrorType } from '@loyaltyengine/properties-client';
 import { ApiException } from './api.exception';
 
 export class BadRequestException extends ApiException {

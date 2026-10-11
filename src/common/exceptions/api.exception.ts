@@ -1,5 +1,5 @@
 import { HttpException } from '@nestjs/common';
-import { ErrorDetail, ErrorType } from '@loyalty-engine/properties';
+import { ErrorDetail, ErrorType } from '@loyaltyengine/properties-client';
 
 export abstract class ApiException extends HttpException {
     code: number;
